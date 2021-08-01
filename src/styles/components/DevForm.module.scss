@@ -32,6 +32,50 @@
       border-bottom: 1px solid #eee;
     }
   }
+  > .inputBlock {
+    margin: 2rem 0;
+  }
+
+  h3 {
+    color: #333;
+
+    display: inline-flex;
+    align-items: center;
+  }
+
+  > .twitterContainer {
+    margin: 2rem 0;
+
+    > .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    > .twitterComponentGroup {
+      margin: 1.5rem 0;
+
+      > div {
+        display: flex;
+
+        background: #f3f3f3;
+        border-radius: 4px;
+        margin: 0.5rem 0;
+        padding: 3px;
+
+        > label {
+          font-size: 14px;
+        }
+        > input {
+          border: 0;
+          width: 100%;
+          padding: 0 5px;
+
+          background: #f3f3f3;
+        }
+      }
+    }
+  }
 
   button[type="submit"] {
     width: 100%;

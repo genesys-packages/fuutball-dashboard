@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import { DevForm } from "../components/DevForm";
+import { AsideForm } from "../components/AsideForm";
 import { DevItem } from "../components/DevItem";
 import styles from "../styles/pages/Home.module.scss";
 
@@ -16,7 +16,7 @@ export default function Home() {
       <main className={styles.mainContainer}>
         <aside>
           <strong>Cadastrar</strong>
-          <DevForm />
+          <AsideForm />
         </aside>
 
         <main>
