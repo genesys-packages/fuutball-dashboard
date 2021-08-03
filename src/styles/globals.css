@@ -13,13 +13,25 @@
   --primary-white-00: #f4f2f4;
 
   --primary-fork: #2ea44f;
-  --secondary-fork: #2ea4;
   --link: #5d80d6;
   --primary: #565661;
+  --discord: #6e86d6;
+  --reports: #4764f1;
 
   --panel-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
   --global-transition: 0.6s all cubic-bezier(0.4, 0, 0.2, 1);
-  --primary-gradient-top: linear-gradient(180deg, #1d1929, rgba(18, 18, 20, 0));
+  --primary-gradient: linear-gradient(
+    91.18deg,
+    var(--dominating) 26.63%,
+    var(--purple) 62.22%
+  );
+
+  --mention-detail: #f9a839;
+  --notification: #f84a4b;
+  --text: #a8a8b3;
+  --purple: #bd93f9;
+
+  --dominating: #9eaac2;
 }
 
 html,
