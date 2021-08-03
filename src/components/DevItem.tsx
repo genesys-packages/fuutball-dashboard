@@ -2,20 +2,52 @@
 
 import styles from "../styles/components/DevItem.module.scss";
 
-function DevItem() {
+type TimesProps = {
+  a: {
+    name: string;
+    goals: number;
+  };
+  b: {
+    name: string;
+    goals: number;
+  };
+};
+
+type FuutballMatchProps = {
+  id: string;
+  times: TimesProps;
+  winner: string;
+  metadata: {
+    event: string;
+    date: string;
+  };
+  twitters: [];
+};
+
+type DevItemProps = {
+  match: FuutballMatchProps;
+};
+
+function DevItem({ match }: DevItemProps) {
   return (
     <li className={styles.devItem}>
       <header>
         <div className={styles.circle} />
 
         <div className={styles.userInfo}>
-          <strong>Barcelona VS Real Madrid</strong>
-          <span>World Cup, 12 de Agosto 2021</span>
+          <strong>
+            {match?.times.a.name} VS {match?.times.b.name}d
+          </strong>
+          <span>
+            {match?.metadata.event}, {match?.metadata.date}
+          </span>
         </div>
       </header>
 
       <div className={styles.winner}>
-        <h1>2 - 1</h1>
+        <h1>
+          {match.times.a.goals} - {match.times.b.goals}
+        </h1>
       </div>
 
       <a href="https://github.com/eliasallex">Excluir partida de futebol</a>

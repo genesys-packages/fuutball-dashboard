@@ -6,6 +6,10 @@
 
   transition: var(--global-transition);
 
+  &:hover {
+    box-shadow: var(--panel-shadow);
+  }
+
   > header {
     display: flex;
     flex-direction: row;
