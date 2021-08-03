@@ -6,16 +6,19 @@ function DevItem() {
   return (
     <li className={styles.devItem}>
       <header>
-        <img src="https://github.com/eliasallex.png" alt="elias alexandre" />
+        <div className={styles.circle} />
 
         <div className={styles.userInfo}>
-          <strong>elias alexandre</strong>
-          <span>ReactJS, Python, Typescript</span>
+          <strong>Barcelona VS Real Madrid</strong>
+          <span>World Cup, 12 de Agosto 2021</span>
         </div>
       </header>
 
-      <p>Programmer. Focused on technologies around the JS language.</p>
-      <a href="https://github.com/eliasallex">Acessar perfil no Github</a>
+      <div className={styles.winner}>
+        <h1>2 - 1</h1>
+      </div>
+
+      <a href="https://github.com/eliasallex">Excluir partida de futebol</a>
     </li>
   );
 }
