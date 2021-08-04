@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 
 import { AsideForm } from "../components/AsideForm";
 import { DevItem } from "../components/DevItem";
@@ -18,7 +18,7 @@ type TimesProps = {
 };
 
 type FuutballMatchProps = {
-  id: string;
+  id?: string;
   times: TimesProps;
   winner: string;
   metadata: {
@@ -41,27 +41,41 @@ type fuutballArgs = {
 export default function Home() {
   const [game, setGame] = useState<FuutballMatchProps[]>([]);
 
-  async function handleAddGame({
-    timeAName,
-    timeBName,
-    timeAGoals,
-    timeBGoals,
-    winner,
-    event,
-    date,
-  }: fuutballArgs) {
+  async function handleAddGame(
+    formEvent: FormEvent<HTMLFormElement>,
+    {
+      timeAName,
+      timeBName,
+      timeAGoals,
+      timeBGoals,
+      winner,
+      event,
+      date,
+    }: fuutballArgs
+  ) {
+    formEvent.preventDefault();
+
     try {
-      console.log(
-        `ADD NEW GAME: ${
-          timeAName +
-          timeBName +
-          timeAGoals +
-          timeBGoals +
-          winner +
-          event +
-          date
-        }`
-      );
+      const { data } = await api.post<FuutballMatchProps>("/new/fuutball", {
+        times: {
+          a: {
+            name: timeAName,
+            goals: timeAGoals,
+          },
+          b: {
+            name: timeBName,
+            goals: timeBGoals,
+          },
+        },
+        winner,
+        metadata: {
+          event,
+          date,
+        },
+        twitters: [],
+      });
+
+      setGame((oldGames) => [data, ...oldGames]);
     } catch (error) {
       alert(error.message);
     }
@@ -97,9 +111,11 @@ export default function Home() {
 
         <main>
           <ul>
-            {game.map((match) => (
-              <DevItem key={match.id} match={match} />
-            ))}
+            {game ? (
+              game.map((match) => <DevItem key={match.id} match={match} />)
+            ) : (
+              <h1>Comece criando nova partida de futebol</h1>
+            )}
           </ul>
         </main>
       </main>

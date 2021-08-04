@@ -14,7 +14,7 @@ type TimesProps = {
 };
 
 type FuutballMatchProps = {
-  id: string;
+  id?: string;
   times: TimesProps;
   winner: string;
   metadata: {

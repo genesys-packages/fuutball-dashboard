@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { FiPlus } from "react-icons/fi";
 
 import styles from "../styles/components/DevForm.module.scss";
@@ -14,7 +14,10 @@ type fuutballArgs = {
 };
 
 type AsideFormProps = {
-  handleAddGame: (data: fuutballArgs) => void;
+  handleAddGame: (
+    formEvent: FormEvent<HTMLFormElement>,
+    data: fuutballArgs
+  ) => void;
 };
 
 function AsideForm({ handleAddGame }: AsideFormProps) {
@@ -29,8 +32,8 @@ function AsideForm({ handleAddGame }: AsideFormProps) {
   return (
     <form
       className={styles.formContainer}
-      onSubmit={() =>
-        handleAddGame({
+      onSubmit={(e) =>
+        handleAddGame(e, {
           timeAName,
           timeBName,
           timeAGoals,
